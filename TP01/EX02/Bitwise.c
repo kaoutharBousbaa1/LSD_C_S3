@@ -5,8 +5,7 @@
 void print_bits(int number){
     int i;
     i = 31;
-    while(i >= 1)
-    {
+    while(i >= 1){
         (number & (1 << i)) ? printf("1 ") : printf("0 ");
         i--;
     }
