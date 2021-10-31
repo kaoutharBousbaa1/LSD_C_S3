@@ -2,7 +2,7 @@
   CFLAGS = -c -Wall
 
   all: Bitwise
-  Bitwise: main.c Bitwise.o -o Bitwise
+  Bitwise: main.o Bitwise.o
 			$(CC) main.o Bitwise.o -o Bitwise
   main.o: main.c
 		   $(CC) $(CFLAGS) main.c
