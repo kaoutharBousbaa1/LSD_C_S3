@@ -2,6 +2,6 @@
 # define Bitwise
 
 void print_bits(int number);
-void print_nth_byte(int n, int m);
+void check_msb(int num);
 
 #endif
