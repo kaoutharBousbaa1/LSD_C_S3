@@ -14,6 +14,10 @@ void print_bits(int number)
     (number & (1 << i)) ? printf("1 ") : printf("0 ");
     printf("\n");
 }
+void check_msb(int num)
+{
+    (num >> 31) ? printf("The most significant bit is set.\n") : printf("The most significant bit is not set");
+}
 /*unsigned char decimalToBinary(unsigned char decimalnumber)
 {
     unsigned char binarynumber = 0;
