@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
 	}
 	int i = 0;
 	int **temp = x;
-	while(i < i)
+	while(i < n)
 	{
 		free(temp[i]);
 		i++;
