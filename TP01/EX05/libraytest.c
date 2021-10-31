@@ -2,7 +2,7 @@
 #include 'mycode.h'
 
 
-int main(int argc, int *argv[]
+int main(int argc, int *argv[])
 {
     print_nth_byte(1, 190);
     check_msb(2);
