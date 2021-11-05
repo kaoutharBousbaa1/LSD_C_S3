@@ -46,7 +46,7 @@ int main(int argc, char *argv[])
 		}
 		i++;
 	}
-	int i = 0;
+	i = 0;
 	int **temp = x;
 	while(i < n)
 	{
@@ -67,9 +67,11 @@ int main(int argc, char *argv[])
 		printf("\n");
 		i++;
 	}
+	i = 0;
 	while(i < n)
 	{
 		free(x[i]);
+		i++;
 	}
 	free(x);
 }
