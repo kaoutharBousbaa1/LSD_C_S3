@@ -7,8 +7,8 @@
 
 char* get_next_line(int fd)
 {
-	char* cr = malloc(sizeof(char)*50);
-	int x = read(fd, cr, 50);
+	char* cr = malloc(sizeof(char)*300);
+	int x = read(fd, cr, 300);
 	return cr;
 }
 int main(int argc, int* argv[])
