@@ -9,6 +9,11 @@ char* get_next_line(int fd)
 {
 	char* cr = malloc(sizeof(char)*300);
 	int x = read(fd, cr, 300);
+	if (cr == NULL) 
+        {   
+		printf("Error! Could not open file\n"); 
+		return NULL;
+	} 
 	return cr;
 }
 int main(int argc, int* argv[])
