@@ -5,25 +5,6 @@
 #include <sys/stat.h> 
 #include <unistd.h>
 
-/*char* get_next_line(int fd)
-{
-	char* line;
-	int n_bytes;
-	void* BUFFER_SIZE[20];
-	if(n_bytes = read(fd, BUFFER_SIZE, 10))
-	{
-		if (line == NULL) 
-            	{   
-              		printf("Error! Could not open file\n"); )
-			return NULL;
-            	} 
-		while(*line == ' ' || *line =='\t')
-			line++;
-		return line;
-	}
-	else
-		return NULL;
-*/
 int x = _BUFFERSIZE_;
 char* get_next_line(int fd)
 {
@@ -31,22 +12,19 @@ char* get_next_line(int fd)
 	int x = read(fd, cr, _BUFFERSIZE_);
 	if (cr == NULL) 
         {   
-		printf("Error! Could not open file\n"); 
+		printf("Error! Could not open file.\n"); 
 		return NULL;
 	} 
 	return cr;
 }
 int main(int argc, int* argv[])
 {	
-	/*FILE* filename = "file.txt";
-	FILE* file = fopen(filename, "r");
-	int fd = open("file.txt", O_RDONLY);
-	char* line;
-	while(line != "\0")
-		line = get_next_line(fd);
-	fclose(file);
-	return 0;*/
 	int fd = open("newfile.txt", O_RDONLY);
+	if(!fd)
+	{
+		printf("Error! The file doesn't exist.\n");
+		exit(1);
+	}
 	char* rt = get_next_line(fd);
 	printf("%s", rt);
 	
