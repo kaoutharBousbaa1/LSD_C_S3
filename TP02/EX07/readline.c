@@ -5,10 +5,11 @@
 #include <sys/stat.h> 
 #include <unistd.h>
 
+int x = _BUFFERSIZE_;
 char* get_next_line(int fd)
 {
-	char* cr = malloc(sizeof(char)*300);
-	int x = read(fd, cr, 300);
+	char* cr = malloc(sizeof(char)*_BUFFERSIZE_);
+	int x = read(fd, cr, _BUFFERSIZE_);
 	if (cr == NULL) 
         {   
 		printf("Error! Could not open file\n"); 
@@ -20,7 +21,7 @@ int main(int argc, int* argv[])
 {	
 	int fd = open("newfile.txt", O_RDONLY);
 	char* rt = get_next_line(fd);
-	printf("Test %s", rt);
+	printf("%s", rt);
 	
 	return 0;
 }
