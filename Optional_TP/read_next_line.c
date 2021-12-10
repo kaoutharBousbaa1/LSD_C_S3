@@ -8,17 +8,13 @@
 int x = BUFSIZ;
 int st_len(char *s)
 {
-	char* temp;
-	int i = 0;
-	if(s == NULL)
+	int i;
+	i = 0;
+	if(!s)
 		return 0;
-	temp = s;
-	while(temp[i] != '\0')
-	{
-		temp = temp + i;
+	while(s[i] != '\0')
 		i++;
-	}
-	return (i+1);
+	return i;
 }
 char 	*ch_join(char *s1, char *s2)
 {
