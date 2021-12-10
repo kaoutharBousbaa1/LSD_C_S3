@@ -22,7 +22,7 @@ char 	*ch_join(char *s1, char *s2)
 	int i, j;
 	if(!s1 || !s2)
 		return NULL;
-	temp = malloc(((st_len(s1) + st_len(s2) + 1) * sizeof(char)));
+	temp = malloc(((st_len(s1) + st_len(s2) + 3) * sizeof(char)));
 	if(!temp)
 		return NULL;
 	i = 0;
@@ -46,7 +46,7 @@ void *stcpy(void *s1, void *s2, int n)
 	temp1 = (char*)s1;
 	temp2 = (char*)s2;
 	while(n--)
-		temp2[n] = temp1[n];
+		temp1[n] = temp2[n];
 	return temp1;
 }
 char* get_line(char *c)
@@ -74,7 +74,7 @@ char 		*get_next_line(int fd)
 	if(BUFSIZ <= 0 || fd < 0)
 		return NULL;
 	byte = 1;
-	while(byte > 0)
+	while(byte != 0)
 	{
 		byte = read(fd, buff, BUFSIZ);
 		if(byte == -1)
@@ -93,7 +93,6 @@ int main(int argc, int* argv[])
 {	
 	int fd = open("newfile.txt", O_RDONLY);
 	char* line = NULL;	
-	line = get_next_line(fd);
 	while(line != NULL)
 	{
 		line = get_next_line(fd);
