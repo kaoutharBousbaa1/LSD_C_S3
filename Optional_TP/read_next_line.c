@@ -21,22 +21,24 @@ char 	*ch_join(char *s1, char *s2)
 	char* temp;
 	int i, j;
 	if(!s1 || !s2)
+	{
+		printf("Test");
 		return NULL;
-	temp = malloc(((st_len(s1) + st_len(s2) + 3) * sizeof(char)));
-	if(!temp)
-		return NULL;
+	}
+	temp = malloc((st_len(s1) + st_len(s2) + 1) * sizeof(char));
 	i = 0;
 	j = 0;
-	while(i < st_len(s1))
+	while(s1[i] != '\0')
 	{
 		temp[i] = s1[i];
 		i++;
 	}
-	while(j < st_len(s2))
+	while(s2[j] != '\0')
 	{
 		temp[j + i] = s2[j];
 		j++;
 	}
+	temp[j+i] = '\0';
 	return temp;
 }
 void *stcpy(void *s1, void *s2, int n)
@@ -52,17 +54,18 @@ void *stcpy(void *s1, void *s2, int n)
 char* get_line(char *c)
 {
 	char* line;
-	int i;
+	static int i = 0;
 	char* tab;
-	if(c = NULL)
+	int j;
+	if(c == NULL)
 		return NULL;
-	i = 0;
+	j = i;
 	while(c[i] != '\n')
 		i++;
 	i++;
-	tab = (char*)malloc(sizeof(char) * (i+1));
-	tab = stcpy(tab, c, i);
-	tab[i] = '\0';
+	tab = (char*)malloc(sizeof(char) * ((i+1)-j));
+	tab = stcpy(tab, c, i-j);
+	tab[i-j] = '\0';
 	return tab;
 }
 char 		*get_next_line(int fd)
@@ -84,7 +87,10 @@ char 		*get_next_line(int fd)
 			buff[byte] = '\0';
 			break;
 		}
-		c = ch_join(c, buff);	
+		if(c == NULL)
+			c = buff;
+		else
+			c = ch_join(c, buff);	
 	}
 	line = get_line(c);
 	return line;
@@ -92,11 +98,13 @@ char 		*get_next_line(int fd)
 int main(int argc, int* argv[])
 {	
 	int fd = open("newfile.txt", O_RDONLY);
-	char* line = NULL;	
-	while(line != NULL)
+	char* line;
+	line = get_next_line(fd);
+	printf("%s", line);
+	/*do
 	{
 		line = get_next_line(fd);
 		printf("%s", line);
-	}
+	}while(line != NULL);*/
 	return 0;
 }
